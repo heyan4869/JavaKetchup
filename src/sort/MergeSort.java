@@ -1,24 +1,17 @@
 package sort;
 
+import java.util.Arrays;
+
 public class MergeSort {
 	public static Integer[] sort(Integer[] array) {
 		if (array.length <= 1) {
 			return array;
 		}
 		int middle = array.length / 2;
-		Integer[] left = new Integer[middle];
-		Integer[] right = new Integer[array.length - middle];
-
-		for (int i = 0; i < left.length; i++) {
-			left[i] = array[i];
-		}
-		for (int i = 0; i < right.length; i++) {
-			right[i] = array[i + left.length];
-		}
-
+		Integer[] left = Arrays.copyOfRange(array, 0, middle);
+		Integer[] right = Arrays.copyOfRange(array, middle, array.length);
 		left = sort(left);
 		right = sort(right);
-
 		return merge(left, right);
 	}
 
@@ -41,5 +34,11 @@ public class MergeSort {
 			}
 		}
 		return result;
+	}
+
+	public static void main(String[] args) {
+		Integer[] arr = { 1, 3, 4, 2, 5 };
+		Integer[] res = sort(arr);
+		System.out.println(Arrays.toString(res));
 	}
 }
