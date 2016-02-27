@@ -1,5 +1,3 @@
-// No.144
-
 package binaryTreeTraversal;
 
 import java.util.ArrayList;
